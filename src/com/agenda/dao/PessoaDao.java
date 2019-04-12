@@ -1,18 +1,31 @@
 package com.agenda.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import com.agenda.modelos.Pessoas;
 import com.mysql.jdbc.Connection;
 
+import util.ConnectionFactory;
+
 public class PessoaDao {
 	private Connection connection;
-	
-	public void cadastraDAO(Pessoas pessoa) {
-		String SQL = "insert into pessoas (email, endereço, id, nome, telefone) values (?,?,?,?,?)";
-		/*System.out.println(pessoa.getNome());
-		System.out.println(pessoa.getSenha());
-		System.out.println(pessoa.getEmail());		
-		System.out.println(pessoa.getTelefone());
-		System.out.println(pessoa.getEndereco());*/
-	}
 
+	public void cadastraDAO(Pessoas pessoa) {
+		String SQL = "insert into pessoas (nome, email, endereco, telefone) values (?,?,?,?)";
+
+		try {
+			this.connection = new ConnectionFactory().getConnection();
+			PreparedStatement stmt = this.connection.prepareStatement(SQL);
+			stmt.setString(1, pessoa.getNome());
+			stmt.setString(2, pessoa.getEmail());
+			stmt.setString(3, pessoa.getEndereco());
+			stmt.setString(4, pessoa.getTelefone());
+			stmt.execute();
+			stmt.close();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

@@ -16,7 +16,7 @@
 
 	<servlet-mapping>
 		<servlet-name>CadastroUsuarioServlet</servlet-name>
-		<url-pattern>/cadastro-usuario</url-pattern>
+		<url-pattern>/cadastra-usuario</url-pattern>
 	</servlet-mapping>
 
 </web-app>
