@@ -43,15 +43,14 @@ public class PessoaDao {
 			List<Pessoas> pessoas = new ArrayList<Pessoas>();
 
 			ResultSet rs = stmt.executeQuery();
-
+			while(rs.next()) {
 			Pessoas pessoa = new Pessoas();
-
 			pessoa.setNome(rs.getString("nome"));
 			pessoa.setTelefone(rs.getString("telefone"));
 			pessoa.setEmail(rs.getString("email"));
 			pessoa.setEndereco(rs.getString("endereco"));
 			pessoas.add(pessoa);
-
+			}
 			stmt.close();
 			this.connection.close();
 			return pessoas;

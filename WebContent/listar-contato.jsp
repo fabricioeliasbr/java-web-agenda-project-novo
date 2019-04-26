@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <link rel="icon" type="image/png" href="assets/iconeproject.png" />
@@ -9,6 +12,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" target="_blank" href="index.html">Home</a>
+  <a class="navbar-brand" target="_blank" href="busca-contatos">Listar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -28,21 +32,29 @@
 	<tr>
 		<th>Nome</td>
 		<th>E-mail</td>
-		<th>EndereÁo</td>
+		<th>Endere√ßo</td>
 		<th>Telefone</td>
 	</tr>
 	<tr>
-		<td>FabrÌcio</td>
+		<td>Fabr√≠cio</td>
 		<td>fabricio@etec.com</td>
 		<td>Rua ABC, 1</td>
 		<td>(11)1111-1111</td>
 	</tr>
 	<tr>
-		<td>Jo„o</td>
+		<td>Jo√£o</td>
 		<td>joao@etec.com</td>
 		<td>Rua ABC, 2</td>
 		<td>(11)1111-1112</td>
 	</tr>
+	<c:forEach var="pessoa" items="$(contatos)">
+	<tr>
+		<td>$(pessoa.nome)</td>
+		<td>$(pessoa.email)</td>
+		<td>$(pessoa.endereco)</td>
+		<td>$(pessoa.telefone)</td>
+	</tr>
+	</c:forEach>
 </table>
 </div>
 
