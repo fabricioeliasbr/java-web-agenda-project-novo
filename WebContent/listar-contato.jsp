@@ -35,24 +35,13 @@
 		<th>Endereço</td>
 		<th>Telefone</td>
 	</tr>
+
+	<c:forEach var="pessoa" items="${contatos}">
 	<tr>
-		<td>Fabrício</td>
-		<td>fabricio@etec.com</td>
-		<td>Rua ABC, 1</td>
-		<td>(11)1111-1111</td>
-	</tr>
-	<tr>
-		<td>João</td>
-		<td>joao@etec.com</td>
-		<td>Rua ABC, 2</td>
-		<td>(11)1111-1112</td>
-	</tr>
-	<c:forEach var="pessoa" items="$(contatos)">
-	<tr>
-		<td>$(pessoa.nome)</td>
-		<td>$(pessoa.email)</td>
-		<td>$(pessoa.endereco)</td>
-		<td>$(pessoa.telefone)</td>
+		<td>${pessoa.nome}</td>
+		<td>${pessoa.email}</td>
+		<td>${pessoa.endereco}</td>
+		<td>${pessoa.telefone}</td>
 	</tr>
 	</c:forEach>
 </table>
