@@ -30,22 +30,22 @@
 <div id="container">
 <table class="table" id="Tabela">
 	<tr>
-		<th>Nome</td>
-		<th>E-mail</td>
-		<th>Endereço</td>
-		<th>Telefone</td>
+		<th>Nome</th>
+		<th>E-mail</th>
+		<th>Endereço</th>
+		<th>Telefone</th>
+		<th></th>
 	</tr>
-
 	<c:forEach var="pessoa" items="${contatos}">
 	<tr>
 		<td>${pessoa.nome}</td>
 		<td>${pessoa.email}</td>
 		<td>${pessoa.endereco}</td>
 		<td>${pessoa.telefone}</td>
+		<td><a href="remover-contato" class="btn btn-primary">Remover</a></td>
 	</tr>
 	</c:forEach>
 </table>
 </div>
-
 </body>
 </html>

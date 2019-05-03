@@ -18,5 +18,10 @@ public class CadastroUsuarioService {
 		PessoaDao userDAO = new PessoaDao();
 		return userDAO.buscaPessoas();
 	}
+	
+	public void removerContato(Pessoas pessoa) {
+		PessoaDao dao = new PessoaDao();
+		dao.removerContato(pessoa);
+	}
 
 }

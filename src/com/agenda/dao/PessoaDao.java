@@ -60,4 +60,8 @@ public class PessoaDao {
 		}
 		return null;
 	}
+	public void removerContato(Pessoas pessoa) {
+		System.out.println("Método remover executado com sucesso");
+	}
+
 }
