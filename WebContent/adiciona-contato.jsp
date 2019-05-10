@@ -20,7 +20,7 @@
 
 <body>
 	<div class="text-center">
-		<h1 class="display-2">Formul√°rio de cadastro</h1><br><br><br>
+		<h1 class="display-2">Formul·rio de cadastro</h1><br><br><br>
 	</div>
 
 	<div class="container ">
@@ -49,9 +49,9 @@
 						</div>
 
 						<div class="form-group col-md-6">
-							<label for="endereco">Endere√ßo:</label> <input type="text"
+							<label for="endereco">EndereÁo:</label> <input type="text"
 								class="form-control" id="endereco" name="endereco"
-								placeholder="Endere√ßo">
+								placeholder="EndereÁo">
 						</div>
 
 						<div class="form-group col-md-6">

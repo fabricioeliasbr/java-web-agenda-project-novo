@@ -45,6 +45,7 @@ public class PessoaDao {
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 			Pessoas pessoa = new Pessoas();
+			pessoa.setId(rs.getLong("id"));
 			pessoa.setNome(rs.getString("nome"));
 			pessoa.setTelefone(rs.getString("telefone"));
 			pessoa.setEmail(rs.getString("email"));
@@ -61,7 +62,18 @@ public class PessoaDao {
 		return null;
 	}
 	public void removerContato(Pessoas pessoa) {
-		System.out.println("Método remover executado com sucesso");
+		String SQL = "delete from pessoas where id=?";
+		
+		try {
+			this.connection = new ConnectionFactory().getConnection();
+			PreparedStatement stmt = connection.prepareStatement(SQL);
+			stmt.setLong(1, pessoa.getId());
+			stmt.execute();
+			stmt.close();
+		} catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+		//System.out.println("Método remover executado com sucesso");
 	}
 
 }

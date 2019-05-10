@@ -7,6 +7,7 @@
 <link rel="icon" type="image/png" href="assets/iconeproject.png" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Lista de contatos</title>
 </head>
 <body>
@@ -19,7 +20,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" target="_blank" href="adiciona-contato.html">Cadastrar<span class="sr-only">(current)</span></a>
+        <a class="nav-link" target="_blank" href="adiciona-contato.jsp">Cadastrar<span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>
@@ -30,6 +31,7 @@
 <div id="container">
 <table class="table" id="Tabela">
 	<tr>
+		<th>ID</th>
 		<th>Nome</th>
 		<th>E-mail</th>
 		<th>Endereço</th>
@@ -38,11 +40,12 @@
 	</tr>
 	<c:forEach var="pessoa" items="${contatos}">
 	<tr>
+		<td>${pessoa.id}</td>
 		<td>${pessoa.nome}</td>
 		<td>${pessoa.email}</td>
 		<td>${pessoa.endereco}</td>
 		<td>${pessoa.telefone}</td>
-		<td><a href="remover-contato" class="btn btn-primary">Remover</a></td>
+		<td><a href="remover-contato?id=${pessoa.id}" class="btn btn-primary">Remover</a></td>
 	</tr>
 	</c:forEach>
 </table>
