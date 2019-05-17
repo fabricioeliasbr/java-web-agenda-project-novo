@@ -29,27 +29,27 @@
 				<form action="cadastra-usuario" id="form-produto">
 					<div class="form-row">
 						<div class="form-group col-md-12">
-							<label for="nome">Nome:</label> <input type="text"
+							<label for="nome">Nome:</label> <input type="text" value="${param.nome}"
 								class="form-control" id="nome" name="nome" placeholder="Nome"
-								required="on">
+								required="required">
 						</div>
 					</div>
 
 					<div class="form-row">
 						<div class="form-group col-md-2">
-							<label for="telefone">Telefone:</label> <input type="text"
+							<label for="telefone">Telefone:</label> <input type="text" value="${param.telefone}"
 								class="form-control" id="telefone" name="telefone" placeholder="Telefone"
 								data-mask="(99)99999-9999">
 						</div>
 
 						<div class="form-group col-md-2">
-							<label for="email">E-mail:</label> <input type="email"
+							<label for="email">E-mail:</label> <input type="email" value="${param.email}"
 								class="form-control" id="email" name="email"
 								placeholder="E-mail">
 						</div>
 
 						<div class="form-group col-md-6">
-							<label for="endereco">Endereço:</label> <input type="text"
+							<label for="endereco">Endereço:</label> <input type="text" value="${param.endereco}"
 								class="form-control" id="endereco" name="endereco"
 								placeholder="Endereço">
 						</div>

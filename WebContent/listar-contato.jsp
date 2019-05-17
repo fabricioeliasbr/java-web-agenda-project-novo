@@ -37,6 +37,7 @@
 		<th>Endereço</th>
 		<th>Telefone</th>
 		<th></th>
+		<th></th>
 	</tr>
 	<c:forEach var="pessoa" items="${contatos}">
 	<tr>
@@ -45,6 +46,9 @@
 		<td>${pessoa.email}</td>
 		<td>${pessoa.endereco}</td>
 		<td>${pessoa.telefone}</td>
+		<td><a href="adiciona-contato.jsp?id=${pessoa.id}&nome=${pessoa.nome}
+		&email=${pessoa.email}&endereco=${pessoa.endereco}
+		&telefone=${pessoa.telefone}" class="btn btn-primary">Editar</a></td>
 		<td><a href="remover-contato?id=${pessoa.id}" class="btn btn-primary">Remover</a></td>
 	</tr>
 	</c:forEach>

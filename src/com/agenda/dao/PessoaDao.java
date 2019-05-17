@@ -26,7 +26,6 @@ public class PessoaDao {
 			stmt.setString(4, pessoa.getTelefone());
 			stmt.execute();
 			stmt.close();
-
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
@@ -74,6 +73,10 @@ public class PessoaDao {
 			throw new RuntimeException(e);
 		}
 		//System.out.println("Método remover executado com sucesso");
+	}
+	
+	public void alterar(Pessoas pessoa) {
+		String SQL = "update pessoa set nome=?, email=?, endereco=?, telefone=? where id=?";
 	}
 
 }
