@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
+
 import com.agenda.modelos.Pessoas;
 import com.mysql.jdbc.Connection;
 
@@ -24,6 +26,7 @@ public class PessoaDao {
 			stmt.setString(2, pessoa.getEmail());
 			stmt.setString(3, pessoa.getEndereco());
 			stmt.setString(4, pessoa.getTelefone());
+			stmt.setLong(5, pessoa.getId());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -42,14 +45,14 @@ public class PessoaDao {
 			List<Pessoas> pessoas = new ArrayList<Pessoas>();
 
 			ResultSet rs = stmt.executeQuery();
-			while(rs.next()) {
-			Pessoas pessoa = new Pessoas();
-			pessoa.setId(rs.getLong("id"));
-			pessoa.setNome(rs.getString("nome"));
-			pessoa.setTelefone(rs.getString("telefone"));
-			pessoa.setEmail(rs.getString("email"));
-			pessoa.setEndereco(rs.getString("endereco"));
-			pessoas.add(pessoa);
+			while (rs.next()) {
+				Pessoas pessoa = new Pessoas();
+				pessoa.setId(rs.getLong("id"));
+				pessoa.setNome(rs.getString("nome"));
+				pessoa.setTelefone(rs.getString("telefone"));
+				pessoa.setEmail(rs.getString("email"));
+				pessoa.setEndereco(rs.getString("endereco"));
+				pessoas.add(pessoa);
 			}
 			stmt.close();
 			this.connection.close();
@@ -60,7 +63,9 @@ public class PessoaDao {
 		}
 		return null;
 	}
+
 	public void removerContato(Pessoas pessoa) {
+
 		String SQL = "delete from pessoas where id=?";
 		
 		try {
@@ -69,14 +74,31 @@ public class PessoaDao {
 			stmt.setLong(1, pessoa.getId());
 			stmt.execute();
 			stmt.close();
-		} catch(SQLException e){
+		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		//System.out.println("Método remover executado com sucesso");
-	}
-	
-	public void alterar(Pessoas pessoa) {
-		String SQL = "update pessoa set nome=?, email=?, endereco=?, telefone=? where id=?";
+
+		
+		// System.out.println("Método remover executado com sucesso");
 	}
 
+	public void alterar(Pessoas pessoa) {
+		String SQL = "update pessoa set nome=?, email=?, endereco=?, telefone=? where id=?";
+		try {
+			this.connection = new ConnectionFactory().getConnection();
+			PreparedStatement stmt = this.connection.prepareStatement(SQL);
+
+			stmt.setString(1, pessoa.getNome());
+			stmt.setString(2, pessoa.getEmail());
+			stmt.setString(3, pessoa.getEndereco());
+			stmt.setString(4, pessoa.getTelefone());
+			stmt.setLong(5, pessoa.getId());
+			stmt.execute();
+			stmt.close();
+			
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
 }

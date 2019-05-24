@@ -27,6 +27,7 @@
 		<div class="card">
 			<div class="card-body">
 				<form action="cadastra-usuario" id="form-produto">
+				<input type="hidden" id="id" name="id" value="${param.id}">
 					<div class="form-row">
 						<div class="form-group col-md-12">
 							<label for="nome">Nome:</label> <input type="text" value="${param.nome}"

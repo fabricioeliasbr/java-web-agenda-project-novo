@@ -30,9 +30,9 @@ public class CadastroUsuarioServlet extends HttpServlet {
 		CadastroUsuarioService service = new CadastroUsuarioService();
 		service.cadastra(pessoa);
 		
-		if(null != request.getParameter("id") && !request.getParameter("id").equals("")) {
-			service.alterar(pessoa);
+		if(null != request.getParameter("id") && !request.getParameter("id").equals("")) {			
 			pessoa.setId(Long.parseLong(request.getParameter("id")));
+			service.alterar(pessoa);
 		}else {
 			service.cadastra(pessoa);
 		}
