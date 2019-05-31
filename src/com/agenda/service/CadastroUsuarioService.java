@@ -7,26 +7,21 @@ import com.agenda.modelos.Pessoas;
 
 public class CadastroUsuarioService {
 
-	public void cadastra(Pessoas pessoa) {
-		PessoaDao userDAO = new PessoaDao();
-			
-		userDAO.cadastraDAO(pessoa);
-		
-	}
+	private PessoaDao dao = new PessoaDao();
 	
 	public List<Pessoas> buscaPessoas(){
-		PessoaDao userDAO = new PessoaDao();
-		return userDAO.buscaPessoas();
+		return dao.buscaPessoas();
 	}
 	
 	public void removerContato(Pessoas pessoa) {
-		PessoaDao dao = new PessoaDao();
 		dao.removerContato(pessoa);
 	}
-	
-	public void alterar(Pessoas pessoa) {
-		PessoaDao dao = new PessoaDao();
-		dao.alterar(pessoa);
-	}
 
+	public void cadastrarOuAlterar (Pessoas pessoa) {
+		if(0 != pessoa.getId()) {
+			dao.alterar(pessoa);
+		}else {
+			dao.cadastraDAO(pessoa);
+		}
+	}
 }
